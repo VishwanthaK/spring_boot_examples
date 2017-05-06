@@ -30,21 +30,21 @@ CREATE TABLE `user` (
   UNIQUE KEY `email_UNIQUE` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
-INSERT INTO `user` VALUES (1,'admin','admin','admin@admin.com','admin','1234567890','$2a$08$lDnHPz7eUkSi6ao14Twuau08mzhWrL4kyZGGU5xfiGALO/Vxd5DOi','2016-01-01 00:00:00',true,1,'2016-01-01 00:00:00');
+INSERT INTO `user` VALUES (1,'admin','admin','admin@admin.com','admin','1234567890','$2a$10$5R1UCnAlK8.mZynWDcgWAegl0K5Y8Whk2Gqf3A2UTCvoGAQIFY90.','2016-01-01 00:00:00',true,1,'2016-01-01 00:00:00');
 
 DROP TABLE IF EXISTS `user_role`;
 CREATE TABLE `user_role` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `record_status` int(2) DEFAULT NULL,
-  `update_on` datetime DEFAULT NULL,
-  `user_id` bigint(20) DEFAULT NULL,
-  `role_id` bigint(20) DEFAULT NULL,
+  `record_status` int(2) NOT NULL,
+  `update_on` datetime NOT NULL,
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_user_role_role_id` (`role_id`),
   KEY `fk_user_role_user_id` (`user_id`),
   CONSTRAINT `fk_user_role_role_id` FOREIGN KEY (`role_id`) REFERENCES `role` (`id`),
   CONSTRAINT `fk_user_role_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
 
-INSERT INTO `user_role` VALUES (1,NULL,NULL,1,1);
+INSERT INTO `user_role` VALUES (1,1,'2016-01-01 00:00:00',1,1);
+
